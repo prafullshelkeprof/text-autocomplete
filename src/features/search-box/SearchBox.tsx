@@ -1,11 +1,12 @@
-import { useState, useRef } from 'react';
-import { getPredictions, apiSupportedLanguages } from './wizkidsAPI';
+import { useState, useRef, useContext } from 'react';
+import { getPredictions } from './wizkidsAPI';
 import { PredictionOptions } from '../prediction-options/PredictionOptions';
+import { ThemeContext } from '../../index'
 
-const lang: string = apiSupportedLanguages.en;
 const selectionStart: number = 0;
 
 export function SearchBox() {
+    const { lang } = useContext(ThemeContext);
     const [textValue, setTextValue] = useState<string>();
     const [listOptions, setListOptions] = useState<string[]>([]);
     const [showPredictions, setShowPredictions] = useState<boolean>(false);
